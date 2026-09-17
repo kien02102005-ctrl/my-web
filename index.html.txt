@@ -39,7 +39,6 @@
             padding: 0;
             background-color: var(--bg-light);
             overflow-x: hidden;
-            zoom: 100%;
         }
 
         /* --- 1. GIAO DIỆN ĐĂNG NHẬP --- */
@@ -61,7 +60,6 @@
             width: 380px;
             max-width: 90%;
             text-align: center;
-            margin: auto;
         }
 
         .login-card .icon {
@@ -128,11 +126,8 @@
         /* --- 2. GIAO DIỆN CHÍNH (FULL WIDTH 100%) --- */
         #app-screen {
             display: flex;
-            width: 100%;
+            width: 100vw;
             min-height: 100vh;
-            justify-content: center;
-            align-items: stretch;
-            margin: 0 auto;
         }
 
         .sidebar {
@@ -197,7 +192,7 @@
 
         .main-content {
             flex: 1;
-            max-width: 100%;
+            width: calc(100vw - 250px);
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -268,7 +263,6 @@
             padding: 25px;
             display: none;
             width: 100%;
-            margin: 0 auto;
         }
 
         .tab-content.active {
@@ -1869,12 +1863,12 @@
                             <thead>
                                 <tr>
                                     <th style="width: 50px; text-align: center;">STT</th>
-                                    <th>Nội dung Đánh giá</th>
-                                    <th style="width: 250px;">Tiêu chí đánh giá</th>
-                                    <th style="width: 100px; text-align: center;">Điểm tối đa</th>
-                                    <th style="width: 100px; text-align: center;">Điểm tự chấm</th>
-                                    <th style="width: 120px; text-align: center; background-color: #f0fdf4; color: #166534;">Điểm Đánh Giá</th>
-                                    ${isAdmin ? `<th style="width: 160px; text-align: center;">Thao tác Admin</th>` : ''}
+                                    <th style="width: 45%;">Nội dung Đánh giá</th>
+                                    <th style="width: 25%;">Tiêu chí đánh giá</th>
+                                    <th style="width: 90px; text-align: center;">Điểm tối đa</th>
+                                    <th style="width: 90px; text-align: center;">Điểm tự chấm</th>
+                                    <th style="width: 100px; text-align: center; background-color: #f0fdf4; color: #166534;">Điểm Đánh Giá</th>
+                                    ${isAdmin ? `<th style="width: 140px; text-align: center;">Thao tác Admin</th>` : ''}
                                 </tr>
                             </thead>
                             <tbody id="kpi-tbody-${secKey}"></tbody>
@@ -2248,22 +2242,22 @@
                 tableHeader: true,
                 children: [
                     new TableCell({
-                        width: { size: 60, type: WidthType.PERCENTAGE },
+                        width: { size: 67, type: WidthType.PERCENTAGE },
                         verticalAlign: VerticalAlign.CENTER,
-                        children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: "Nội Dung đánh giá", bold: true, font: "Times New Roman", size: 22 })] })]
+                        children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: "Nội dung đánh giá", bold: true, font: "Times New Roman", size: 22 })] })]
                     }),
                     new TableCell({
-                        width: { size: 13, type: WidthType.PERCENTAGE },
+                        width: { size: 11, type: WidthType.PERCENTAGE },
                         verticalAlign: VerticalAlign.CENTER,
                         children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: "Điểm tối đa", bold: true, font: "Times New Roman", size: 22 })] })]
                     }),
                     new TableCell({
-                        width: { size: 13, type: WidthType.PERCENTAGE },
+                        width: { size: 11, type: WidthType.PERCENTAGE },
                         verticalAlign: VerticalAlign.CENTER,
                         children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: "Điểm tự chấm", bold: true, font: "Times New Roman", size: 22 })] })]
                     }),
                     new TableCell({
-                        width: { size: 14, type: WidthType.PERCENTAGE },
+                        width: { size: 11, type: WidthType.PERCENTAGE },
                         verticalAlign: VerticalAlign.CENTER,
                         children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: "Điểm đánh giá", bold: true, font: "Times New Roman", size: 22 })] })]
                     })
@@ -2316,19 +2310,19 @@
                             const itemRow = new TableRow({
                                 children: [
                                     new TableCell({
-                                        width: { size: 60, type: WidthType.PERCENTAGE },
+                                        width: { size: 67, type: WidthType.PERCENTAGE },
                                         children: [new Paragraph({ children: [new TextRun({ text: `${idx + 1}. ${item.title}`, font: "Times New Roman", size: 22 })] })]
                                     }),
                                     new TableCell({
-                                        width: { size: 13, type: WidthType.PERCENTAGE },
+                                        width: { size: 11, type: WidthType.PERCENTAGE },
                                         children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: String(item.maxScore), bold: true, font: "Times New Roman", size: 22 })] })]
                                     }),
                                     new TableCell({
-                                        width: { size: 13, type: WidthType.PERCENTAGE },
+                                        width: { size: 11, type: WidthType.PERCENTAGE },
                                         children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: String(item.selfScore), font: "Times New Roman", size: 22 })] })]
                                     }),
                                     new TableCell({
-                                        width: { size: 14, type: WidthType.PERCENTAGE },
+                                        width: { size: 11, type: WidthType.PERCENTAGE },
                                         children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: String(item.adminScore), font: "Times New Roman", size: 22 })] })]
                                     })
                                 ]
@@ -2343,19 +2337,19 @@
             const totalRow = new TableRow({
                 children: [
                     new TableCell({
-                        width: { size: 60, type: WidthType.PERCENTAGE },
+                        width: { size: 67, type: WidthType.PERCENTAGE },
                         children: [new Paragraph({ alignment: AlignmentType.RIGHT, children: [new TextRun({ text: "Tổng điểm đánh giá:", bold: true, font: "Times New Roman", size: 22 })] })]
                     }),
                     new TableCell({
-                        width: { size: 13, type: WidthType.PERCENTAGE },
+                        width: { size: 11, type: WidthType.PERCENTAGE },
                         children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: String(totalMax.toFixed(1)), bold: true, font: "Times New Roman", size: 22 })] })]
                     }),
                     new TableCell({
-                        width: { size: 13, type: WidthType.PERCENTAGE },
+                        width: { size: 11, type: WidthType.PERCENTAGE },
                         children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: String(totalSelf.toFixed(1)), bold: true, font: "Times New Roman", size: 22 })] })]
                     }),
                     new TableCell({
-                        width: { size: 14, type: WidthType.PERCENTAGE },
+                        width: { size: 11, type: WidthType.PERCENTAGE },
                         children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: String(totalAdmin.toFixed(1)), bold: true, font: "Times New Roman", size: 22 })] })]
                     })
                 ]
@@ -2397,6 +2391,11 @@
             const monthParts = selectedKpiMonth.split('-');
             const monthStr = `Tháng ${monthParts[1]} năm ${monthParts[0]}`;
 
+            const mainKpiTable = new Table({
+                width: { size: 100, type: WidthType.PERCENTAGE },
+                rows: kpiTableRows
+            });
+
             const doc = new Document({
                 sections: [{
                     properties: {},
@@ -2411,36 +2410,20 @@
                         }),
                         new Paragraph({
                             alignment: AlignmentType.CENTER,
-                            spacing: { after: 200 },
+                            spacing: { after: 300 },
                             children: [
-                                new TextRun({ text: `(Loại bảng: ${kpiTypeName})`, italics: true, font: "Times New Roman", size: 22 })
+                                new TextRun({ text: `Họ và tên: ${kpiTargetUser.toUpperCase()} (${kpiTypeName})`, bold: true, font: "Times New Roman", size: 24 })
                             ]
                         }),
-                        new Paragraph({
-                            children: [
-                                new TextRun({ text: `Họ và tên: `, bold: true, font: "Times New Roman", size: 22 }),
-                                new TextRun({ text: kpiTargetUser, font: "Times New Roman", size: 22 })
-                            ]
-                        }),
-                        new Paragraph({
-                            spacing: { after: 200 },
-                            children: [
-                                new TextRun({ text: `Đơn vị: `, bold: true, font: "Times New Roman", size: 22 }),
-                                new TextRun({ text: "Khoa Hóa Lý - Trung tâm KSBT Bắc Ninh", font: "Times New Roman", size: 22 })
-                            ]
-                        }),
-                        new Table({
-                            width: { size: 100, type: WidthType.PERCENTAGE },
-                            rows: kpiTableRows
-                        }),
-                        new Paragraph({ spacing: { after: 300 }, children: [] }),
+                        mainKpiTable,
+                        new Paragraph({ spacing: { after: 400 }, children: [] }),
                         signatureTable
                     ]
                 }]
             });
 
             Packer.toBlob(doc).then(blob => {
-                saveAs(blob, `Bieu_Danh_Gia_KPI_${kpiTargetUser}_${selectedKpiMonth}.docx`);
+                saveAs(blob, `Phieu_Danh_Gia_KPI_${kpiTargetUser}_${selectedKpiMonth}.docx`);
             });
         }
     </script>
